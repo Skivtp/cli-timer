@@ -31,24 +31,28 @@ while True:
     except ValueError:
         print("not a number")
    
-
+study_end_en = 'Study session complete! Take a break.'
+rest_end_en = 'Break time over! Get back to work.'
 
 time_left = mintues * 60
 
 def countdown(t):
-    t = time_left
+    
     while t > 0:
         if t >= 600 and t % 300 == 0:
-            print(t / 60)
+            print(t // 60)
         elif 60 <= t < 600 and t % 60 == 0:
-            print(t / 60)
+            print(t // 60)
         elif 10 <= t < 60 and t % 5 == 0:
             print(t)
         elif t < 10:
             print(t)
         time.sleep(1)  
         t -= 1
-    print("Time's up!")
+    if mode == '1':
+        print(study_end_en)
+    else:
+        print(rest_end_en)
     
 def play_sound():
     system = platform.system()
