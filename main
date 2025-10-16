@@ -1,0 +1,54 @@
+import time
+
+mode_names = {
+        '1': 'study',
+        '2': 'rest'
+    }
+
+print("hello")
+
+def mode_selection():
+    mode = input('choose mode (1 - study, 2 - rest): ')
+    modelist = ['1', '2']
+    while mode not in modelist:
+        print("no such mode")
+        mode = input('choose mode (1 - study, 2 - rest): ')
+    return mode
+mode = mode_selection()  
+
+print(f'mode {mode_names[mode]} selected')
+
+while True:
+    mintues = input("Enter minutes: ")
+    try:
+        mintues = int(mintues)
+        if mintues <= 0:
+            print("not a positive number")
+        else:
+            break
+    except ValueError:
+        print("not a number")
+   
+
+
+time_left = mintues * 60
+
+def countdown(t):
+    t = time_left
+    while t > 0:
+        if t >= 600 and t % 300 == 0:
+            print(t)
+        elif 60 <= t < 600 and t % 60 == 0:
+            print(t)
+        elif 10 <= t < 60 and t % 5 == 0:
+            print(t)
+        elif t < 10:
+            print(t)
+        time.sleep(1)  
+        t -= 1
+    print("Time's up!")
+countdown(time_left)
+
+    
+
+
