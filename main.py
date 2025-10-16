@@ -1,7 +1,21 @@
 import time
 import platform
 import os
-
+from datetime import datetime
+print("Current working directory:", os.getcwd())
+def write_log(mode, duration, status):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+    mode_text = "study" if mode == "1" else "rest"
+    log_line = f"{now} | mode: {mode_text} | duration: {duration} min | status: {status}\n"
+    
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    log_dir = os.path.join(base_dir, "logs")
+    os.makedirs(log_dir, exist_ok=True)
+    
+    log_path = os.path.join(log_dir, "session_log.txt")
+    with open(log_path, "a") as file:
+        file.write(log_line)
+        
 mode_names = {
         '1': 'study',
         '2': 'rest'
@@ -21,20 +35,21 @@ mode = mode_selection()
 print(f'mode {mode_names[mode]} selected')
 
 while True:
-    mintues = input("Enter minutes: ")
+    duration = input("Enter duration in minutes: ")
     try:
-        mintues = int(mintues)
-        if mintues <= 0:
+        duration = int(duration)
+        if duration <= 0:
             print("not a positive number")
         else:
             break
     except ValueError:
         print("not a number")
-   
+
+write_log(mode, duration, "started") 
 study_end_en = 'Study session complete! Take a break.'
 rest_end_en = 'Break time over! Get back to work.'
 
-time_left = mintues * 60
+time_left = duration * 60
 
 def countdown(t):
     
@@ -53,7 +68,7 @@ def countdown(t):
         print(study_end_en)
     else:
         print(rest_end_en)
-    
+write_log(mode, duration, "finished")   
 def play_sound():
     system = platform.system()
 
@@ -72,5 +87,7 @@ countdown(time_left)
 play_sound()
 
     
+
+
 
 
