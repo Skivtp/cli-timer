@@ -1,4 +1,6 @@
 import time
+import platform
+import os
 
 mode_names = {
         '1': 'study',
@@ -37,9 +39,9 @@ def countdown(t):
     t = time_left
     while t > 0:
         if t >= 600 and t % 300 == 0:
-            print(t)
+            print(t / 60)
         elif 60 <= t < 600 and t % 60 == 0:
-            print(t)
+            print(t / 60)
         elif 10 <= t < 60 and t % 5 == 0:
             print(t)
         elif t < 10:
@@ -47,7 +49,23 @@ def countdown(t):
         time.sleep(1)  
         t -= 1
     print("Time's up!")
+    
+def play_sound():
+    system = platform.system()
+
+    if system == "Windows":
+        try:
+            import winsound
+            winsound.PlaySound("SystemHand", winsound.SND_ALIAS)
+        except ImportError:
+            print("winsound not available")
+    elif system == "Linux" or system == "Darwin":  # Darwin = macOS
+            # Requires 'sox' installed (for 'play' command)
+        os.system('play -nq -t alsa synth 1 sine 440')
+    else:
+        print('\a')  # fallback: ASCII bell
 countdown(time_left)
+play_sound()
 
     
 
