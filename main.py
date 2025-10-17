@@ -89,7 +89,7 @@ elif mode == "study light":
     time_left = modes["study light"]["duration"] * 60
     rest_time = modes["light_study_rest"]["duration"] * 60
 else:
-    time_left = duration
+    time_left = duration  * 60
 # функция обратного отсчета
 def countdown(t):
     while t > 0:
