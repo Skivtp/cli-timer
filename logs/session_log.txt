@@ -1,2 +1,6 @@
 2025-10-17 01:53 | mode: study | duration: 1 min | status: started
 2025-10-17 01:53 | mode: study | duration: 1 min | status: finished
+2025-10-17 02:06 | mode: rest | duration: 3 min | status: started
+2025-10-17 02:06 | mode: rest | duration: 3 min | status: finished
+2025-10-17 16:03 | mode: rest | duration: 5 min | status: started
+2025-10-17 16:03 | mode: rest | duration: 5 min | status: finished
