@@ -26,4 +26,4 @@ jobs:
 
     - name: Run flake8
       run: |
-        flake8 main-dict.py
+        flake8 main.py
