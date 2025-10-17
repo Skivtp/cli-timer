@@ -85,7 +85,7 @@ else:
 if mode == "study intensive":   
     time_left = modes["study intensive"]["duration"] * 60
     rest_time = modes["rest"]["duration"] * 60
-elif mode == "study light":
+elif mode == "study light": 
     time_left = modes["study light"]["duration"] * 60
     rest_time = modes["light_study_rest"]["duration"] * 60
 else:
@@ -155,7 +155,7 @@ else:  # mode == "study light"
     study_time()
 
 
-print("that`s all for today!") 
+#print("that`s all for today!") 
 
 
 
