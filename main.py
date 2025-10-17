@@ -1,9 +1,9 @@
 import time
 import platform
 import os
-from datetime import datetime
+# from datetime import datetime # остается для последующего логирования
 
-# задаю словари 
+# задаю словари
 # общий словарь режимов
 modes = {
     "study intensive": {
@@ -28,7 +28,7 @@ modes = {
         "end_message": "Break time over! Get back to work.",
         "sound": "chime"
     },
-     "light_study_rest": {
+    "light_study_rest": {
         "duration": 15,
         "end_message": "Break time over! Get back to work.",
         "sound": "chime"
@@ -48,12 +48,15 @@ mode_options = {
 
 print("hello")
 
+
 def mode_selection():
     mode_key = input('choose mode (1 - study intensive, 2 - study light, 3 - other): ')
     while mode_key not in mode_options:
         print("no such mode")
         mode_key = input('choose mode (1 - study intensive, 2 - study light, 3 - other): ')
     return mode_key
+
+
 mode_key = mode_selection()
 mode = mode_options[mode_key]
 
@@ -82,14 +85,16 @@ else:
             print("not a number")
 # выбор режима работает, теперь нужно проверить что работает длительность
 
-if mode == "study intensive":   
+if mode == "study intensive":
     time_left = modes["study intensive"]["duration"] * 60
     rest_time = modes["rest"]["duration"] * 60
-elif mode == "study light": 
+elif mode == "study light":
     time_left = modes["study light"]["duration"] * 60
     rest_time = modes["light_study_rest"]["duration"] * 60
 else:
-    time_left = duration  * 60
+    time_left = duration * 60
+
+
 # функция обратного отсчета
 def countdown(t):
     while t > 0:
@@ -101,9 +106,8 @@ def countdown(t):
             print(t)
         elif t < 10:
             print(t)
-        time.sleep(1)  
+        time.sleep(1)
         t -= 1
-    
 # конец функции обратного отсчета
 
 
@@ -122,12 +126,11 @@ def play_sound(sound_name):
         except Exception:
             pass
     elif system == "Linux" or system == "Darwin":  # Darwin = macOS
-            # Requires 'sox' installed (for 'play' command)
+        # Requires 'sox' installed (for 'play' command)
         os.system('play -nq -t alsa synth 1 sine 440')
     else:
         print('\a')  # fallback: ASCII bell
 # конец звукового оповещения
-
 
 
 # функция для определения количества повторов учебных периодов
@@ -144,19 +147,13 @@ def study_time():
             countdown(rest_time)
             print(modes["rest"]["end_message"])
             play_sound(modes["rest"]["sound"])
-        
 
 
 if mode == "other":
-    countdown(time_left) # вызов функции обратного отсчета
-    play_sound(modes[mode]["sound"]) # вызов звукового оповещения
+    countdown(time_left)  # вызов функции обратного отсчета
+    play_sound(modes[mode]["sound"])  # вызов звукового оповещения
     print(modes["other"]["end_message"])
 else:  # mode == "study light"
     study_time()
 
-
-#print("that`s all for today!") 
-
-
-
-
+# print("that`s all for today!")
