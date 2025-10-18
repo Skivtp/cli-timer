@@ -9,3 +9,15 @@
 2025-10-18 14:22 | mode: other | duration: 3 min | status: finished
 2025-10-18 14:23 | mode: other | duration: 3 min | status: started
 2025-10-18 14:26 | mode: study light | duration: 3 min | status: started
+2025-10-18 14:33 | mode: study light | sessions: 3 min | status: started
+2025-10-18 14:33 | mode: study intensive | sessions: 3 | status: started
+2025-10-18 14:37 | mode: study light | sessions: 3 | status: started
+2025-10-18 14:38 | mode: study intensive | sessions: 2 | status: started
+2025-10-18 14:40 | mode: other | duration: 1920 min | status: started
+2025-10-18 14:40 | mode: other | duration: 60 min | status: started
+2025-10-18 14:43 | mode: other | duration: 2 min | status: started
+2025-10-18 14:49 | mode: other | duration: 2 min | status: started
+2025-10-18 14:51 | mode: other | duration: 2 min | status: finished
+2025-10-18 14:55 | mode: study intensive | sessions: 22 | status: startes
+2025-10-18 15:05 | mode: other | duration: 1 min | status: started
+2025-10-18 15:06 | mode: other | duration: 1 min | status: finished

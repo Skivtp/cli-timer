@@ -13,7 +13,11 @@ def write_log(mode, duration, status):
         else "study light" if mode == "2"
         else "other"
     )
-    log_line = f"{now} | mode: {mode_text} | duration: {duration} min | status: {status}\n"
+    log_line = (
+        f"{now} | mode: {mode_text} | sessions: {duration} | "
+        f"status: {status}\n" if mode in ["1", "2"] else f"{now} | "
+        f"mode: {mode_text} | duration: {duration} min | status: {status}\n"
+    )
     base_dir = os.path.dirname(os.path.abspath(__file__))
     log_dir = os.path.join(base_dir, "logs")
     os.makedirs(log_dir, exist_ok=True)
@@ -103,7 +107,7 @@ else:
         except ValueError:
             print("not a number")
 # выбор режима работает, теперь нужно проверить что работает длительность
-write_log(mode_key, session_repeat, "started")  # логирование
+
 if mode == "study intensive":
     time_left = modes["study intensive"]["duration"] * 60
     rest_time = modes["rest"]["duration"] * 60
@@ -112,6 +116,7 @@ elif mode == "study light":
     rest_time = modes["light_study_rest"]["duration"] * 60
 else:
     time_left = duration * 60
+    log_other_time = duration  # для логирования в режиме "other"
 
 
 # функция обратного отсчета
@@ -154,6 +159,7 @@ def play_sound(sound_name):
 
 # функция для определения количества повторов учебных периодов
 def study_time():
+    write_log(mode_key, session_repeat, "started")
     for session in range(session_repeat):
         print(f"Session {session + 1}/{session_repeat} — Study")
         countdown(time_left)
@@ -169,10 +175,12 @@ def study_time():
 
 
 if mode == "other":
+    write_log(mode_key, log_other_time, "started")
     countdown(time_left)  # вызов функции обратного отсчета
     play_sound(modes[mode]["sound"])  # вызов звукового оповещения
     print(modes["other"]["end_message"])
+    write_log(mode_key, log_other_time, "finished")  # логирование
 else:  # mode == "study light"
     study_time()
-write_log(mode_key, session_repeat, "finished")  # логирование
+    write_log(mode_key, session_repeat, "finished")  # логирование
 # print("that`s all for today!")
