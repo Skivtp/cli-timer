@@ -1,25 +1,27 @@
 import time
 import platform
 import os
-from datetime import datetime # остается для последующего логирования
+from datetime import datetime  # остается для последующего логирования
 # логирование
 print("Current working directory:", os.getcwd())
+
+
 def write_log(mode, duration, status):
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     mode_text = (
         "study intensive" if mode == "1"
         else "study light" if mode == "2"
         else "other"
-)
+    )
     log_line = f"{now} | mode: {mode_text} | duration: {duration} min | status: {status}\n"
-    
     base_dir = os.path.dirname(os.path.abspath(__file__))
     log_dir = os.path.join(base_dir, "logs")
     os.makedirs(log_dir, exist_ok=True)
-    
     log_path = os.path.join(log_dir, "session_log.txt")
     with open(log_path, "a") as file:
         file.write(log_line)
+
+
 # задаю словари
 # общий словарь режимов
 modes = {
@@ -101,7 +103,7 @@ else:
         except ValueError:
             print("not a number")
 # выбор режима работает, теперь нужно проверить что работает длительность
-write_log(mode_key, session_repeat, "started") # логирование
+write_log(mode_key, session_repeat, "started")  # логирование
 if mode == "study intensive":
     time_left = modes["study intensive"]["duration"] * 60
     rest_time = modes["rest"]["duration"] * 60
@@ -172,5 +174,5 @@ if mode == "other":
     print(modes["other"]["end_message"])
 else:  # mode == "study light"
     study_time()
-write_log(mode_key, session_repeat, "finished")  # логирование 
+write_log(mode_key, session_repeat, "finished")  # логирование
 # print("that`s all for today!")
