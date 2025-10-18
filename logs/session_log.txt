@@ -4,3 +4,8 @@
 2025-10-17 02:06 | mode: rest | duration: 3 min | status: finished
 2025-10-17 16:03 | mode: rest | duration: 5 min | status: started
 2025-10-17 16:03 | mode: rest | duration: 5 min | status: finished
+2025-10-18 14:21 | mode: other | duration: 3 min | status: started
+2025-10-18 14:22 | mode: other | duration: 3 min | status: started
+2025-10-18 14:22 | mode: other | duration: 3 min | status: finished
+2025-10-18 14:23 | mode: other | duration: 3 min | status: started
+2025-10-18 14:26 | mode: study light | duration: 3 min | status: started
